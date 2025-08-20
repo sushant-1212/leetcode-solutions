@@ -5,15 +5,14 @@ class Solution {
         for(int i = 0; i<nums.length; i++){
             if(nums[i]==1){
                 sum++;
-            }
-            else{
-                sum=0;
+            } else{
+                sum = 0;
             }
             if(sum>answer){
                 answer = sum;
             }
         }
         return answer;
-        
     }
 }
+       
