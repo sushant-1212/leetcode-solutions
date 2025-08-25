@@ -9,8 +9,8 @@ class Solution {
                 sumDivisors[j]+=i;
             }
         }
-        int N = nums.length;
         int count = 0;
+        int N = nums.length;
         for(int i = 0; i<N; i++){
             if(countDivisors[nums[i]]==4){
                 count+=sumDivisors[nums[i]];
@@ -19,3 +19,6 @@ class Solution {
         return count;
     }
 }
+        
+        
+        
