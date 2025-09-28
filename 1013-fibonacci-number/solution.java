@@ -14,6 +14,6 @@ class Solution {
             secondTerm = thirdTerm;
            
         }
-         return firstTerm; 
+         return firstTerm;
     }
 }
