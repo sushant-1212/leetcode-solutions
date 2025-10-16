@@ -12,7 +12,7 @@ class Solution {
             s = s/10;
             
             }
-            return x==rev;
+            return x ==rev;
         }
         
     }
