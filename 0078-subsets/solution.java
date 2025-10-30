@@ -1,19 +1,20 @@
 class Solution {
-    List<List<Integer>> answer = new ArrayList<>();
-    List<Integer> currentSeq = new ArrayList<>();
-    public void recursion(int index , int nums[]){
-        if(index == nums.length){
-            answer.add(new ArrayList<Integer>(currentSeq));
-            return;
-        }
-        currentSeq.add(nums[index]);
-        recursion(index + 1 , nums);
-        currentSeq.remove(currentSeq.size()-1);
-        recursion(index + 1 , nums);
+    List<List<Integer>> ans = new ArrayList<>();
+    List<Integer> currentSet = new ArrayList<>();
+    public void recur(int index , int [] nums){
+            if(index == nums.length){
+                ans.add(new ArrayList<>(currentSet));
+                return;
+            }
+            currentSet.add(nums[index]);
+            recur(index+1,nums);
+            currentSet.remove(currentSet.size()-1);
+            recur(index+1,nums);
     }
+
     public List<List<Integer>> subsets(int[] nums) {
-        recursion(0,nums);
-        return answer;
+        recur(0,nums);
+        return ans;
         
     }
 }
