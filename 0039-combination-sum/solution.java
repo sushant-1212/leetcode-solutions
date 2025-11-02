@@ -1,21 +1,23 @@
 class Solution {
-    List<List<Integer>> answer = new ArrayList<>();
-    List<Integer> currentSeq = new ArrayList<>();
-    public void recursion(int target , int candidates[] , int start){
+    List<List<Integer>> ans;
+    List<Integer> currentSeq;
+    public void recur(int target , int index , int[]candidates){
         if(target == 0){
-            answer.add(new ArrayList<Integer>(currentSeq));
+            ans.add(new ArrayList<>(currentSeq));
             return;
         }
-        for(int i = start; i<candidates.length; i++){
+        for(int i = index; i<candidates.length; i++){
             if(target>=candidates[i]){
                 currentSeq.add(candidates[i]);
-                recursion(target - candidates[i],candidates,i);
+                recur(target-candidates[i],i,candidates);
                 currentSeq.remove(currentSeq.size()-1);
             }
         }
     }
     public List<List<Integer>> combinationSum(int[] candidates, int target) {
-        recursion(target,candidates,0);
-        return answer;      
+        ans = new ArrayList<>();
+        currentSeq = new ArrayList<>();
+        recur(target,0,candidates);
+        return ans;
     }
 }
