@@ -1,19 +1,23 @@
 class Solution {
+    int[] dp;
     public int fib(int n) {
-        if(n==0){
-            return 0;
-        } else if(n==1){
-            return 1;
+        dp = new int[n+1];
+        for(int i = 0; i<=n; i++){
+            dp[i]=-1;
         }
-        int firstTerm = 0;
-        int secondTerm = 1;
-        for(int i = 1; i<=n; i++){
-            int thirdTerm = firstTerm + secondTerm;
+        return recursion(n);
         
-            firstTerm = secondTerm;
-            secondTerm = thirdTerm;
-           
-        }
-         return firstTerm;
     }
+    private int recursion(int n){
+        if(n==0 || n==1){
+            return n;
+        }
+        if(dp[n]!=-1){
+            return dp[n];
+        }
+        int ans = recursion(n-1) + recursion(n-2);
+        dp[n] = ans;
+        return ans;
+    }
+
 }
