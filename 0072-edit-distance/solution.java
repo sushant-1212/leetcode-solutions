@@ -1,27 +1,30 @@
 class Solution {
-    int dp[][];
     String s1;
     String s2;
+    int[][]dp;
     public int recursion(int i , int j){
-        if(i==s1.length()) return (s2.length()-j);
-        if(j==s2.length()) return(s1.length()-i);
+        if(i==s1.length()){
+            return s2.length()-j;
+        }
+        if(j==s2.length()){
+            return s1.length()-i;
+        }
+        if(s1.charAt(i)==s2.charAt(j)){
+             dp[i][j] = recursion(i+1,j+1);
+        }
         if(dp[i][j]!=-1){
             return dp[i][j];
         }
+        int ans = 0;
         int ops1 = Integer.MAX_VALUE;
         int ops2 = Integer.MAX_VALUE;
         int ops3 = Integer.MAX_VALUE;
-        int ans = 0;
-        if(s1.charAt(i)==s2.charAt(j)){
-            return dp[i][j] = recursion(i+1,j+1);
-        }
-        ops1 = 1 +recursion(i,j+1);
-        ops2 =  1 +recursion(i+1,j+1);
-        ops3 = 1 +recursion(i+1,j);
+        ops1 = 1 + recursion(i ,j+1);
+        ops2 = 1 + recursion(i+1 , j+1);
+        ops3 = 1 + recursion(i+1,j);
         ans = Math.min(ops1,Math.min(ops2,ops3));
-        dp[i][j] = ans;
+        dp[i][j]=ans;
         return ans;
-        
 
     }
     public int minDistance(String word1, String word2) {
@@ -33,7 +36,6 @@ class Solution {
                 dp[i][j]=-1;
             }
         }
-         return recursion(0,0);
-        
+        return recursion(0,0);
     }
 }
