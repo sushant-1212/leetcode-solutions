@@ -19,7 +19,7 @@ class Solution {
                 endIndex = k-1;
             }
         }
-          for(int i = 0; i<n; i++){
+         for(int i = 0; i<n; i++){
             int j = i;
             int k = i+1;
             int length = 0;
@@ -34,7 +34,7 @@ class Solution {
                 endIndex = k-1;
             }
         }
-        return s.substring(startIndex , endIndex+1);
+        return s.substring(startIndex,endIndex+1);
         
     }
 }
