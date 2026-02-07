@@ -3,10 +3,10 @@ class Solution {
         int count = 0;
         int candidate = 0;
         for(int x : nums){
-            if(count==0){
+            if(count == 0){
                 candidate = x;
-            }
-            if(x==candidate){
+                count++;
+            } else if(x == candidate){
                 count++;
             } else{
                 count--;
@@ -15,4 +15,3 @@ class Solution {
         return candidate;
     }
 }
-
