@@ -1,10 +1,13 @@
 class Solution {
-    int n;
     int m;
-     int[][] vis;
-     char[][] mat;
-     boolean hasCycle;
-     public void dfs(int i , int j , int pi ,int pj){
+    int n;
+    int[][] vis;
+    char[][] mat;
+    boolean hasCycle;
+    public void dfs(int i , int j , int pi , int pj){
+        if(i<0 || j<0 || i>=m || j>=n){
+            return ;
+        }
         vis[i][j] = 1;
         if(i-1>=0 && mat[i-1][j]==mat[i][j]){
             if(vis[i-1][j]==0){
@@ -14,7 +17,7 @@ class Solution {
                 return;
             }
         }
-        if(i+1<n && mat[i+1][j]==mat[i][j]){
+        if(i+1<m && mat[i+1][j]==mat[i][j]){
             if(vis[i+1][j]==0){
                 dfs(i+1,j,i,j);
             } else if(!(i+1 == pi && j == pj)){
@@ -30,7 +33,7 @@ class Solution {
                 return;
             }
         }
-        if(j+1<m && mat[i][j+1]==mat[i][j]){
+        if(j+1<n && mat[i][j+1]==mat[i][j]){
             if(vis[i][j+1]==0){
                 dfs(i,j+1,i,j);
             } else if(!(i == pi && j+1 == pj)){
@@ -38,19 +41,20 @@ class Solution {
                 return;
             }
         }
-     }
+    }
     public boolean containsCycle(char[][] grid) {
         mat = grid;
-         n = grid.length;
-         m = grid[0].length;
-         vis = new int[n][m];
-        for(int i = 0; i<n; i++){
-            for(int j = 0; j<m; j++){
+        m = grid.length;
+        n = grid[0].length;
+        vis = new int[m][n];
+        hasCycle = false;
+        for(int i = 0; i<m; i++){
+            for(int j = 0; j<n; j++){
                 if(vis[i][j]==0){
                     dfs(i,j,-1,-1);
-                    if(hasCycle){
-                        return true;
-                    }
+                }
+                if(hasCycle){
+                    return true;
                 }
             }
         }
