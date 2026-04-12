@@ -14,30 +14,17 @@
  * }
  */
 class Solution {
-    List<Integer> list = new ArrayList<>();
+    private boolean dfs(TreeNode node , HashSet<Integer> set , int k){
+        if(node == null){
+            return false;
+        }if(set.contains(k-node.val)) return true;
+        set.add(node.val);
+        return dfs(node.left,set,k) || dfs(node.right,set,k);
+
+    }
     public boolean findTarget(TreeNode root, int k) {
-        inorder(root);
-        int i = 0;
-        int j = list.size()-1;
-        while(i<j){
-            int sum = list.get(i) + list.get(j);
-            if(sum==k){
-                return true;
-            } else if(sum<k){
-                i++;
-            } else{
-                j--;
-            }
-        }
-        return false;
-    }
-    private void inorder(TreeNode root){
-    if(root==null){
-        return;
-    }
-    inorder(root.left);
-    list.add(root.val);
-    inorder(root.right);
+        HashSet<Integer> set = new HashSet<>();
+        return dfs(root,set,k);
+        
     }
 }
-    
