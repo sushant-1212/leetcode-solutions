@@ -1,23 +1,26 @@
 class Solution {
 
-    public void helper(List<String> ans, String str, int open, int close, int n) {
+    List<String> ans = new ArrayList<>();
 
-        if(str.length() == 2 * n) {
-            ans.add(str);
+    public List<String> generateParenthesis(int n) {
+        backtrack("", 0, 0, n);
+        return ans;
+    }
+
+    public void backtrack(String s, int open, int close, int n) {
+
+        if (s.length() == 2 * n) {
+            ans.add(s);
             return;
         }
 
-        if(open < n) helper(ans, str + "(", open + 1, close, n);
+        if (open < n) {
+            backtrack(s + "(", open + 1, close, n);
+        }
 
-        if(close < open) helper(ans, str + ")", open, close + 1, n);
-    }
-
-    public List<String> generateParenthesis(int n) {
-
-        List<String> ans = new ArrayList<>();
-
-        helper(ans, "", 0, 0, n);
-
-        return ans;
+        if (close < open) {
+            backtrack(s + ")", open, close + 1, n);
+        }
     }
 }
+
