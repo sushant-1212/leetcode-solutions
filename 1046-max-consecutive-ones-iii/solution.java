@@ -1,25 +1,22 @@
 class Solution {
     public int longestOnes(int[] nums, int k) {
-        int n = nums.length;
-        int i = 0;
-        int zero = 0;
+        
+        int left = 0;
         int ans = 0;
-        Deque<Integer> q = new LinkedList<>();
-        while(i<n){
-            q.addLast(nums[i]);
-            if(nums[i]==0){
-                zero++;
+        int count = 0;
+        for(int right = 0; right<nums.length; right++){
+            if(nums[right] == 0){
+                count++;
             }
-            while(q.size()>0 && zero>k){
-                if(q.peek()==0){
-                    zero--;
+            while(count>k){
+                if(nums[left] == 0){
+                    count--;
                 }
-                q.remove();
+                left++;
             }
-             ans = Math.max(ans,(int)q.size());
-             i++;
+            ans = Math.max(ans,right-left + 1);
         }
-
+        
         return ans;
     }
 }
