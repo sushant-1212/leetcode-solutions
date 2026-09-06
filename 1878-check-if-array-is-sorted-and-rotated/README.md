@@ -1,40 +1,24 @@
-<p>Given an array <code>nums</code>, return <code>true</code><em> if the array was originally sorted in non-decreasing order, then rotated <strong>some</strong> number of positions (including zero)</em>. Otherwise, return <code>false</code>.</p>
+## My Approach
 
-<p>There may be <strong>duplicates</strong> in the original array.</p>
+I check the array in a circular way and count how many times the order is broken.
 
-<p><strong>Note:</strong> An array <code>A</code> rotated by <code>x</code> positions results in an array <code>B</code> of the same length such that <code>B[i] == A[(i+x) % A.length]</code> for every valid index <code>i</code>.</p>
+For every element, I compare it with the next element:
 
-<p>&nbsp;</p>
-<p><strong class="example">Example 1:</strong></p>
+```java
+nums[i] > nums[(i + 1) % n]
+```
 
-<pre>
-<strong>Input:</strong> nums = [3,4,5,1,2]
-<strong>Output:</strong> true
-<strong>Explanation:</strong> [1,2,3,4,5] is the original sorted array.
-You can rotate the array by x = 2 positions to begin on the element of value 3: [3,4,5,1,2].
-</pre>
+If this condition is true, it means the increasing order is broken, so I increment `count`.
 
-<p><strong class="example">Example 2:</strong></p>
+A sorted array has **0 break points**, while a sorted array that has been rotated can have **exactly 1 break point**.
 
-<pre>
-<strong>Input:</strong> nums = [2,1,3,4]
-<strong>Output:</strong> false
-<strong>Explanation:</strong> There is no sorted array once rotated that can make nums.
-</pre>
+So, if the number of break points is more than `1`, the array cannot be sorted and rotated.
 
-<p><strong class="example">Example 3:</strong></p>
+Therefore, I return:
 
-<pre>
-<strong>Input:</strong> nums = [1,2,3]
-<strong>Output:</strong> true
-<strong>Explanation:</strong> [1,2,3] is the original sorted array.
-You can rotate the array by x = 0 positions (i.e. no rotation) to make nums.
-</pre>
+```java
+return count <= 1;
+```
 
-<p>&nbsp;</p>
-<p><strong>Constraints:</strong></p>
+`(i + 1) % n` is used to compare the last element with the first element, making the array circular.
 
-<ul>
-	<li><code>1 &lt;= nums.length &lt;= 100</code></li>
-	<li><code>1 &lt;= nums[i] &lt;= 100</code></li>
-</ul>
