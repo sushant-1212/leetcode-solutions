@@ -1,10 +1,9 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        int ans = 0;
-        for(int i = 0; i<nums.length; i++){
-            ans = ans ^ nums[i];
+        int XOR = 0;
+        for(int i=0; i<nums.length; i++){
+            XOR^=nums[i];
         }
-        return ans;
-        
+        return XOR;
     }
 }
