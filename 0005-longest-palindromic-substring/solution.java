@@ -1,40 +1,31 @@
 class Solution {
     public String longestPalindrome(String s) {
+        int strt = 0;
+        int end = 0;
         int n = s.length();
-        int maxLength = 0;
-        int startIndex = 0;
-        int endIndex = 0;
-        for(int i = 1; i<=(n-2); i++){
-            int j = i-1;
-            int k = i+1;
-            int length = 1;
-            while(j>=0 && k<n && s.charAt(j)==s.charAt(k)){
-                length+=2;
-                j--;
-                k++;
+        for(int i=0; i<n; i++){
+            int left = i;
+            int right = i;
+            while(left>=0 && right<n && s.charAt(left) == s.charAt(right)){
+                left--;
+                right++;
+                if(right-left-1 > end-strt){
+                    strt = left+1;
+                    end = right-1;
+                }
             }
-            if(length>maxLength){
-                maxLength = length;
-                startIndex = j+1;
-                endIndex = k-1;
-            }
-        }
-         for(int i = 0; i<n; i++){
-            int j = i;
-            int k = i+1;
-            int length = 0;
-            while(j>=0 && k<n && s.charAt(j)==s.charAt(k)){
-                length+=2;
-                j--;
-                k++;
-            }
-            if(length>maxLength){
-                maxLength = length;
-                startIndex = j+1;
-                endIndex = k-1;
+            left = i;
+            right = i+1;
+            while(left>=0 && right<n && s.charAt(left)==s.charAt(right)){
+                left--;
+                right++;
+                if(right-left-1 > end-strt){
+                    strt = left+1;
+                    end = right-1;
+                }
             }
         }
-        return s.substring(startIndex,endIndex+1);
+        return s.substring(strt,end+1);
         
     }
 }
