@@ -1,26 +1,20 @@
 class Solution {
-
-    List<String> ans = new ArrayList<>();
-
-    public List<String> generateParenthesis(int n) {
-        backtrack("", 0, 0, n);
-        return ans;
-    }
-
-    public void backtrack(String s, int open, int close, int n) {
-
-        if (s.length() == 2 * n) {
-            ans.add(s);
+    public void solve(String str, int open, int close, int n, List<String>ans){
+        if(str.length()==2*n){
+            ans.add(str);
             return;
         }
-
-        if (open < n) {
-            backtrack(s + "(", open + 1, close, n);
+        if(open<n){
+             solve(str + "(",open+1,close,n,ans);
         }
-
-        if (close < open) {
-            backtrack(s + ")", open, close + 1, n);
+        if(close<open){
+             solve(str + ")",open,close+1,n,ans);
         }
     }
+    public List<String> generateParenthesis(int n) {
+        List<String> ans = new ArrayList<>();
+        solve("",0,0,n,ans);
+        return ans;
+        
+    }
 }
-
