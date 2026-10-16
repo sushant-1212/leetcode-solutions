@@ -8,3 +8,10 @@ Repository containing personal solutions to LeetCode Data Structures and Algorit
 
 ## Progress Overview
 - Daily problem solving and consistency tracking.
+
+## Problem Topics
+- Arrays & Strings
+- Two Pointers & Sliding Window
+- Dynamic Programming
+- Bit Manipulation
+- Trees & Graphs
