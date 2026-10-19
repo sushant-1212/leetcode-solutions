@@ -15,3 +15,8 @@ Repository containing personal solutions to LeetCode Data Structures and Algorit
 - Dynamic Programming
 - Bit Manipulation
 - Trees & Graphs
+
+## Solution Guidelines
+- Aim for optimal time and space complexity.
+- Maintain readable, clean, and well-structured code.
+- Analyze constraints and edge cases before coding.
