@@ -20,3 +20,6 @@ Repository containing personal solutions to LeetCode Data Structures and Algorit
 - Aim for optimal time and space complexity.
 - Maintain readable, clean, and well-structured code.
 - Analyze constraints and edge cases before coding.
+
+## Repository Navigation
+Each directory contains the problem description and the solution implementation file.
